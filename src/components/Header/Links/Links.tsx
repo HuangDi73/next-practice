@@ -1,6 +1,9 @@
+"use client";
+
 import { ILink } from "@/types";
 import styles from "./Links.module.css";
 import NavLink from "./NavLink/NavLink";
+import { useState } from "react";
 
 const links: ILink[] = [
   {
@@ -22,11 +25,34 @@ const links: ILink[] = [
 ];
 
 const Links = () => {
+  const [open, setOpen] = useState<boolean>(false);
+
+  const session = true;
+  const isAdmin = true;
+
   return (
     <div className={styles.container}>
-      {links.map((link) => (
-        <NavLink item={link} key={link.title} />
-      ))}
+      <div className={styles.links}>
+        {links.map((link) => (
+          <NavLink item={link} key={link.title} />
+        ))}
+        {session ? (
+          <>
+            {isAdmin && <NavLink item={{ title: "Admin", path: "/admin" }} />}
+            <button className={styles.logout}>Logout</button>
+          </>
+        ) : (
+          <NavLink item={{ title: "Login", path: "/login" }} />
+        )}
+      </div>
+      <button className={styles.menuButton} onClick={() => setOpen((prev) => !prev)}>Menu</button>
+      {
+        open && <div className={styles.mobileLinks}>
+            {links.map((link) => (
+              <NavLink item={link} key={link.title} />
+            ))}
+        </div>
+      }
     </div>
   );
 };
