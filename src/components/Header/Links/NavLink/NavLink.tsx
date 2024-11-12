@@ -1,15 +1,11 @@
 "use client";
 
-import { ILink } from "@/types";
+import { NavLinkProps } from "@/types";
 import styles from "./NavLink.module.css";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-type Props = {
-  item: ILink;
-};
-
-const NavLink = ({ item: { title, path } }: Props) => {
+const NavLink = ({ item: { title, path } }: NavLinkProps) => {
   const pathName = usePathname();
 
   return (

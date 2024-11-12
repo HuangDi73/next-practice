@@ -7,7 +7,7 @@ import { useState } from "react";
 
 const links: ILink[] = [
   {
-    title: "HomePage",
+    title: "Home",
     path: "/",
   },
   {
@@ -45,14 +45,19 @@ const Links = () => {
           <NavLink item={{ title: "Login", path: "/login" }} />
         )}
       </div>
-      <button className={styles.menuButton} onClick={() => setOpen((prev) => !prev)}>Menu</button>
-      {
-        open && <div className={styles.mobileLinks}>
-            {links.map((link) => (
-              <NavLink item={link} key={link.title} />
-            ))}
+      <button
+        className={styles.menuButton}
+        onClick={() => setOpen((prev) => !prev)}
+      >
+        Menu
+      </button>
+      {open && (
+        <div className={styles.mobileLinks}>
+          {links.map((link) => (
+            <NavLink item={link} key={link.title} />
+          ))}
         </div>
-      }
+      )}
     </div>
   );
 };
