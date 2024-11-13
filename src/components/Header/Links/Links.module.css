@@ -9,9 +9,9 @@
     cursor: pointer;
     font-weight: bold;
 }
-.menuButton,
+.menu,
 .mobileLinks {
-   display: none;
+    display: none;
 }
 
 @media (max-width: 768px) {
@@ -19,7 +19,7 @@
         display: none;
     }
 
-    .menuButton {
+    .menu {
         display: block;
         cursor: pointer;
     }
@@ -36,6 +36,6 @@
         align-items: center;
         justify-content: center;
         gap: 10px;
+        z-index: 50;
     }
 }
-
